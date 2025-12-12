@@ -1,19 +1,17 @@
+import asyncio
 from config import DEFAULT_TIMEOUT
-from core.fetch_demo import get_info
+from core.fetch_demo import get_capitals
 
 
 if __name__ == '__main__':
-    request_data = [
-        {
-            'url': 'https://example.com',
-            'fields': [],
-        },
-        {
-            'url': 'https://example.com',
-            'fields': [],
-        },
+    country_list = [
+        'Russia',
+        'Georgia',
+        'Turkey',
     ]
-    get_info(
-        request_data,
-        DEFAULT_TIMEOUT,
+    asyncio.run(
+        get_capitals(
+            country_list,
+            DEFAULT_TIMEOUT,
+        )
     )
