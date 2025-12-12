@@ -2,7 +2,6 @@ import asyncio
 import httpx
 
 
-
 def parse_json(response_json):
     response_dict = response_json[0]
     capital = response_dict['capital'][0]
