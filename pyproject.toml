@@ -1,15 +1,15 @@
 [project]
-name = "mini-async-parser"
+name = "echo-bot-fsm"
 version = "0.1.0"
-description = "Mini Async Parser"
+description = "Echo Bot FSM"
 authors = [
     {name = "DanteOnline",email = "iamdanteonline@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10,<3.15"
 dependencies = [
-    "python-dotenv (>=1.2.1,<2.0.0)",
-    "httpx (>=0.28.1,<0.29.0)"
+    "aiogram (>=3.23.0,<4.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)"
 ]
 
 
@@ -17,10 +17,10 @@ dependencies = [
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry]
+package-mode = false
+
 [dependency-groups]
 dev = [
     "pylint (>=4.0.4,<5.0.0)"
 ]
-
-[tool.poetry]
-package-mode = false

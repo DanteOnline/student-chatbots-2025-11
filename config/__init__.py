@@ -1,5 +1,8 @@
-import os
+"""
+Настройки проекта
+"""
+from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
-DEFAULT_TIMEOUT = float(os.getenv('DEFAULT_TIMEOUT', '1.0'))
+BOT_TOKEN = getenv("BOT_TOKEN")
