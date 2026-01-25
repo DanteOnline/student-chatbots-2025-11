@@ -7,6 +7,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from app.keyboars.reply import FORM_BUTTON_TEXT, main_menu_keyboard
 from app.models import create_person_form
+from app.db.session import SessionLocal
+from app.db.repository import save_person
 
 
 router = Router()
@@ -49,6 +51,8 @@ async def city_enter(message: Message, state: FSMContext):
     data = await state.get_data()
     name = data.get('name')
     person_form = create_person_form(name, city)
-    result_text = f'Привет, {person_form}'
+    async with SessionLocal() as session:
+        person = await save_person(session, person_form)
+    result_text = f'Данные о {person.id} сохранены в БД'
     await message.answer(result_text, reply_markup=main_menu_keyboard)
     await state.clear()

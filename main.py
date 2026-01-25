@@ -14,6 +14,8 @@ from app.handlers import (
     form,
     errors,
 )
+from app.db import init_db
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,13 +27,15 @@ logging.basicConfig(
 
 logger = logging.getLogger("bot")
 
-dp = Dispatcher()
+
 
 async def main() -> None:
     """
     Запуск бота
     """
+    await init_db()
 
+    dp = Dispatcher()
     # middlewares
     dp.message.middleware(LoggingMiddleware())
     dp.callback_query.middleware(LoggingMiddleware())
