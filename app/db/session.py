@@ -1,3 +1,6 @@
+"""
+Работа с сессий
+"""
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
     async_sessionmaker,
@@ -11,7 +14,7 @@ engine = create_async_engine(
     echo=False,
 )
 
-SessionLocal = async_sessionmaker(
+session_cls = async_sessionmaker(
     engine,
     expire_on_commit=False,
     class_=AsyncSession,

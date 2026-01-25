@@ -8,7 +8,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from app.keyboars.reply import FORM_BUTTON_TEXT, main_menu_keyboard
 from app.models import create_person_form
-from app.db.session import SessionLocal
+from app.db.session import session_cls
 from app.db.repository import save_person, get_person_list
 
 
@@ -52,7 +52,7 @@ async def city_enter(message: Message, state: FSMContext):
     data = await state.get_data()
     name = data.get('name')
     person_form = create_person_form(name, city)
-    async with SessionLocal() as session:
+    async with session_cls() as session:
         person = await save_person(session, person_form)
     result_text = (f'Спасибо {person.name} из {person.city}. '
                    f'Ваши данные были сохранены в базу. '
@@ -66,7 +66,7 @@ async def command_start_handler(message: Message) -> None:
     """
     Обработчик команды /history
     """
-    async  with SessionLocal() as session:
+    async  with session_cls() as session:
         person_list = await get_person_list(session)
 
     response_text = '\n'.join([str(person) for person in person_list])
