@@ -1,8 +1,8 @@
 """
 Reply клавиатуры (в чате)
 """
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 FAQ_BUTTON_TEXT = 'FAQ'
 ABOUT_BUTTON_TEXT = 'О нас'

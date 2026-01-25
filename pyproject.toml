@@ -22,7 +22,34 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 package-mode = false
 
+
 [dependency-groups]
 dev = [
-    "pylint (>=4.0.4,<5.0.0)"
+    "ruff (>=0.14.14,<0.15.0)"
 ]
+
+[tool.ruff]
+# Явно говорим, что проверяем
+src = ["app"]
+
+# Какие правила включаем
+lint.select = [
+    "E",   # pycodestyle (pep8)
+    "F",   # pyflakes (ошибки)
+    "W",   # предупреждения
+    "I",   # сортировка импортов
+    "B",   # bugbear (опасные конструкции)
+]
+
+# Игнорируем виртуалки и мусор
+exclude = [
+    ".venv",
+    "venv",
+    "__pycache__",
+]
+
+# Длина строки (как у black)
+line-length = 88
+
+[tool.ruff.format]
+quote-style = "single"

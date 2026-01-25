@@ -1,6 +1,7 @@
 """
 Main models
 """
+
 from dataclasses import dataclass
 
 
@@ -9,6 +10,7 @@ class PersonForm:
     """
     Данные пользователя
     """
+
     name: str
     city: str
 

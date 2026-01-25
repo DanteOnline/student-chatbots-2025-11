@@ -1,10 +1,14 @@
 """
 Репозиторий для работы с базой
 """
+
 from typing import List
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.models import PersonForm, create_person_form
+
 from .models import Person
 
 
@@ -39,7 +43,5 @@ async def get_person_list(session: AsyncSession) -> List[PersonForm]:
     all_persons_query = select(Person)
     result = await session.execute(all_persons_query)
     persons = result.scalars().all()
-    person_list = [
-        create_person_form(person.name, person.city) for person in persons
-    ]
+    person_list = [create_person_form(person.name, person.city) for person in persons]
     return person_list

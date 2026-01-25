@@ -1,23 +1,26 @@
 """
 Раздел Анкета
 """
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.filters import Command
-from aiogram.types import Message, ForceReply
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import StatesGroup, State
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import ForceReply, Message
+
+from app.db.repository import get_person_list, save_person
+from app.db.session import session_cls
 from app.keyboars.reply import FORM_BUTTON_TEXT, main_menu_keyboard
 from app.models import create_person_form
-from app.db.session import session_cls
-from app.db.repository import save_person, get_person_list
-
 
 router = Router()
+
 
 class FormChoice(StatesGroup):  # pylint:disable=too-few-public-methods
     """
     Стадии заполнения анкеты
     """
+
     name = State()
     city = State()
 
@@ -54,19 +57,21 @@ async def city_enter(message: Message, state: FSMContext):
     person_form = create_person_form(name, city)
     async with session_cls() as session:
         person = await save_person(session, person_form)
-    result_text = (f'Спасибо {person.name} из {person.city}. '
-                   f'Ваши данные были сохранены в базу. '
-                   'Вы можете их посмотреть командой /history')
+    result_text = (
+        f'Спасибо {person.name} из {person.city}. '
+        f'Ваши данные были сохранены в базу. '
+        'Вы можете их посмотреть командой /history'
+    )
     await message.answer(result_text, reply_markup=main_menu_keyboard)
     await state.clear()
 
 
-@router.message(Command("history"))
+@router.message(Command('history'))
 async def command_start_handler(message: Message) -> None:
     """
     Обработчик команды /history
     """
-    async  with session_cls() as session:
+    async with session_cls() as session:
         person_list = await get_person_list(session)
 
     response_text = '\n'.join([str(person) for person in person_list])

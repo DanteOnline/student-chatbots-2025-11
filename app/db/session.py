@@ -1,13 +1,14 @@
 """
 Работа с сессий
 """
+
 from sqlalchemy.ext.asyncio import (
-    create_async_engine,
-    async_sessionmaker,
     AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
 )
 
-DATABASE_URL = "sqlite+aiosqlite:///./db.sqlite3"
+DATABASE_URL = 'sqlite+aiosqlite:///./db.sqlite3'
 
 engine = create_async_engine(
     DATABASE_URL,
