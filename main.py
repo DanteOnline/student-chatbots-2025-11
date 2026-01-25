@@ -7,6 +7,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from app.config import BOT_TOKEN
+
 # from app.db import init_db
 from app.handlers import (
     about,
