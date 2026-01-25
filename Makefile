@@ -9,3 +9,9 @@ format:
 
 lint:
 	poetry run ruff check .
+
+migrate:
+	alembic upgrade head
+
+make_migrations:
+	alembic revision --autogenerate

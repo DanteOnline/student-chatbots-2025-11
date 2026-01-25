@@ -7,7 +7,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from app.config import BOT_TOKEN
-from app.db import init_db
+# from app.db import init_db
 from app.handlers import (
     about,
     common,
@@ -29,7 +29,7 @@ async def main() -> None:
     """
     Запуск бота
     """
-    await init_db()
+    # await init_db()
 
     dp = Dispatcher()
     # middlewares

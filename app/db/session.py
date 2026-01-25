@@ -1,14 +1,14 @@
 """
 Работа с сессий
 """
-
+from app.config import DATABASE_URL
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     async_sessionmaker,
     create_async_engine,
 )
 
-DATABASE_URL = 'sqlite+aiosqlite:///./db.sqlite3'
+# DATABASE_URL = 'sqlite+aiosqlite:///./db.sqlite3'
 
 engine = create_async_engine(
     DATABASE_URL,
