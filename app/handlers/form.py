@@ -54,7 +54,7 @@ async def city_enter(message: Message, state: FSMContext):
     city = message.text
     data = await state.get_data()
     name = data.get('name')
-    person_form = create_person_form(name, city)
+    person_form = create_person_form(name, city, message.from_user.id)
     async with session_cls() as session:
         person = await save_person(session, person_form)
     result_text = (
@@ -72,7 +72,10 @@ async def command_start_handler(message: Message) -> None:
     Обработчик команды /history
     """
     async with session_cls() as session:
-        person_list = await get_person_list(session)
+        person_list = await get_person_list(
+            session,
+            message.from_user.id,
+        )
 
     response_text = '\n'.join([str(person) for person in person_list])
     await message.answer(response_text, reply_markup=main_menu_keyboard)
