@@ -7,4 +7,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install
 COPY ./ ./
 
+RUN mkdir -p /data
+
+CMD ["poetry", "run", "alembic", "upgrade", "head"]
 CMD ["poetry", "run", "python", "main_webhook.py"]
