@@ -15,6 +15,5 @@ SYNC_DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///./db.sqlite3')
 # Для webhook
 WEBHOOK_URL = getenv("WEBHOOK_URL")  # Базовый URL вебхука
 WEBHOOK_PATH = getenv("WEBHOOK_PATH", "/webhook")  # Путь для webhook
-# WEBHOOK_HOST = getenv("WEBHOOK_HOST", "0.0.0.0")  # Хост для FastAPI сервера
 WEBHOOK_HOST = getenv("WEBHOOK_HOST", "localhost")  # Хост для FastAPI сервера
 WEBHOOK_PORT = int(getenv("WEBHOOK_PORT", "8000"))  # Порт для FastAPI сервера
