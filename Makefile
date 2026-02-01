@@ -1,6 +1,9 @@
 run:
 	python .\main.py
 
+run_webhook:
+	python .\main_webhook.py
+
 lint_and_fix:
 	poetry run ruff check . --fix
 
@@ -15,3 +18,6 @@ migrate:
 
 make_migrations:
 	alembic revision --autogenerate
+
+ngrok:
+	ngrok http 8000
