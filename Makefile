@@ -1,8 +1,11 @@
 run:
-	python .\main.py
+	python main.py
 
 run_webhook:
-	python .\main_webhook.py
+	python main_webhook.py
+
+delete_webhook:
+	python delete_webhook.py
 
 lint_and_fix:
 	poetry run ruff check . --fix
