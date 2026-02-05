@@ -1,6 +1,8 @@
 import asyncio
+
 from aiogram import Bot
 from app import config
+
 
 async def delete_webhook():
     async with Bot(token=config.BOT_TOKEN) as bot:
