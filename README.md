@@ -1,4 +1,6 @@
-# Homework 3. Bot with Database
+# Homework 5. Bot with LLM
+
+Бот - Генератор тупых советов
 
 ## Установка
 
@@ -11,18 +13,10 @@ poetry install
 ### Make
 
 ```commandline
-make migrate
-```
-
-```commandline
 make run
 ```
 
 ### Python
-
-```commandline
-alembic upgrade head
-```
 
 ```commandline
 python main.py
@@ -32,10 +26,4 @@ python main.py
 
 - /start - главное меню
 - /help - главное меню
-- /history - история анкет
-
-## Разделы
-
-- "О нас" - инфо о боте
-- "FAQ" - список вопросов
-- "Анкета" - заполнение анкеты
+- /ask <вопрос> - вопрос к LLM
