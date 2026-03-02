@@ -4,7 +4,7 @@
 """
 from .answer_builder import get_answer_with_citation
 from .chunking import chunk_file
-from .keyword_search import search_chunks
+from .similar_search import search_chunks
 
 
 async def run_askdoc(question: str, doc_source: str) -> str:
@@ -25,5 +25,5 @@ async def run_askdoc(question: str, doc_source: str) -> str:
     return f'{answer} {source}'
 
 
-async def keywords_strategy(question):
+async def similar_strategy(question):
     return await run_askdoc(question, './docs/1_Filosofskiy_kamen.txt')

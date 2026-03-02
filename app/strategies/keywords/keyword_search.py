@@ -59,4 +59,16 @@ def search_chunks(
             scored.append({**ch, "score": score})
 
     scored.sort(key=lambda x: x["score"], reverse=True)
+
+    result = scored[:top_n]
+
+    print('START')
+    for item in result:
+        print(item['text'])
+        print(item['score'])
+        print(item['chunk_id'])
+        print(len(item['text']))
+
+    print('END')
+
     return scored[:top_n]
