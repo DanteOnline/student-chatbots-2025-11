@@ -1,12 +1,11 @@
 """
 Main models
 """
-import asyncio
 import logging
-import os
 
 from dotenv import load_dotenv
-from openai import AsyncOpenAI, OpenAIError
+
+from app.llm_client import get_llm_client
 
 logger = logging.getLogger(__name__)
 
@@ -47,42 +46,12 @@ SYSTEM_PROMPT = """
 И источник на основе которого найден ответ.
 """
 
-class LLMClient:
-
-    def __init__(self):
-        self.api_key = os.getenv("OPENROUTER_API_KEY")
-        self.client = AsyncOpenAI(
-        api_key=self.api_key,
-        base_url="https://openrouter.ai/api/v1",
-        timeout=20.0,
-        )
-
-    async def ask(self, user_text: str) -> str:
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"Вопрос: {user_text}"},
-        ]
-
-        try:
-            response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=messages,
-                temperature=0.5,
-                max_tokens=150,
-            )
-            return response.choices[0].message.content
-        except asyncio.TimeoutError:
-            logger.warning("LLM timeout")
-            return "Слишком долгий поиск."
-        except OpenAIError:
-            logger.exception("LLM OpenAI error")
-            return "Ошибка поиска."
-        except Exception:
-            logger.exception("Unexpected LLM error")
-
-llm_client = LLMClient()
-
 
 async def ask_llm(question):
-    answer = await llm_client.ask(question)
+    llm_client = await get_llm_client()
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": f"Вопрос: {question}"},
+    ]
+    answer = await llm_client.ask(messages)
     return answer

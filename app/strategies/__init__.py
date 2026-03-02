@@ -1,7 +1,4 @@
-from . import (
-    # dummy,
-    llm_direct,
-)
+from . import keywords
 
 
 async def search(question, strategy):
@@ -10,4 +7,5 @@ async def search(question, strategy):
 
 async def get_strategy():
     # return dummy.always_down_know
-    return llm_direct.ask_llm
+    # return llm_direct.ask_llm
+    return keywords.keywords_strategy

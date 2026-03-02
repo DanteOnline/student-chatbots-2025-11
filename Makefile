@@ -10,6 +10,9 @@ delete_webhook:
 lint_and_fix:
 	poetry run ruff check . --fix
 
+lint_and_fix_unsafe:
+	poetry run ruff check . --fix --unsafe-fixes
+
 format:
 	poetry run ruff format .
 
