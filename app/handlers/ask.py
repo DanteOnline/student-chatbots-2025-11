@@ -2,20 +2,22 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from app.models import LLMClient
+from app.strategies import get_strategy, search
 
 router = Router()
-llm_client = LLMClient()
 
 @router.message(Command("ask"))
 async def ask_handler(message: Message) -> None:
-    text = message.text.replace("/ask", "").strip()
-    if not text:
+    question = message.text.replace("/ask", "").strip()
+    if not question:
         await message.answer("Задайте вопрос после команды /ask")
         return
-    if len(text) > 500:
+    if len(question) > 500:
         await message.answer("Слишком серьёзная проблема. Я такое не потяну.")
         return
     thinking = await message.answer("Думаю...")
-    answer = await llm_client.ask(text)
+    # answer = await llm_client.ask(text)
+    # await thinking.edit_text(answer)
+    search_strategy = await get_strategy()
+    answer = await search(question, search_strategy)
     await thinking.edit_text(answer)

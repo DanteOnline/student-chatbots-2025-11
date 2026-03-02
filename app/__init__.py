@@ -7,9 +7,9 @@ import logging
 from aiogram import Dispatcher
 
 from app.handlers import (
+    ask,
     common,
     errors,
-    llm,
 )
 from app.middlewares.logging import LoggingMiddleware
 
@@ -35,5 +35,5 @@ async def init_dispatcher() -> Dispatcher:
     dispatcher.include_router(errors.router)
     # основные
     dispatcher.include_router(common.router)
-    dispatcher.include_router(llm.router)
+    dispatcher.include_router(ask.router)
     return dispatcher
