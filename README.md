@@ -6,3 +6,5 @@ Homeworks for OTUS course "Chatbots"
 - [Homework 3. Bot with Database](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_3_db_bot)
 - [Homework 4. Webhook and Docker](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_4_webhook_docker)
 - [Homework 5. Bot with LLM](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_5_ask_llm)
+- [Homework 7. RAG](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_7_rag)
+- 
