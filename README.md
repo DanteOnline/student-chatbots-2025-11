@@ -1,6 +1,6 @@
-# Homework 5. Bot with LLM
+# Homework 7. Bot RAG
 
-Бот - Генератор тупых советов
+Можно задавать вопросы про Гарри Поттера или другим документам :)
 
 ## Установка
 
@@ -9,6 +9,12 @@ poetry install
 ```
 
 ## Запуск
+
+### QDrant
+
+```commandline
+docker compose -f docker-compose.qdrant.yml up
+```
 
 ### Make
 
@@ -26,4 +32,4 @@ python main.py
 
 - /start - главное меню
 - /help - главное меню
-- /ask <вопрос> - вопрос к LLM
+- /ask <вопрос> - вопрос к боту
