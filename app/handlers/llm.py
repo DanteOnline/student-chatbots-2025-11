@@ -1,5 +1,4 @@
-from aiogram import Router
-from aiogram.filters import Command
+from aiogram import Router, F
 from aiogram.types import Message
 
 from app.models import LLMClient
@@ -7,7 +6,7 @@ from app.models import LLMClient
 router = Router()
 llm_client = LLMClient()
 
-@router.message(Command("ask"))
+@router.message(~F.text.startswith("/"))
 async def ask_handler(message: Message) -> None:
     text = message.text.replace("/ask", "").strip()
     if not text:
