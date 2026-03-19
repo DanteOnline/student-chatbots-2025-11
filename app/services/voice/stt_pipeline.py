@@ -1,13 +1,14 @@
 """
-Пайплайн распознавания речи: загрузка модели Faster-Whisper (small, CPU, INT8),
-транскрипция с указанием языка и пунктуации, обработка ошибок и длинных сообщений.
+Пайплайн распознавания речи: загрузка модели Faster-Whisper
+(small, CPU, INT8),
+транскрипция с указанием языка и пунктуации,
+обработка ошибок и длинных сообщений.
 """
 from pathlib import Path
-from typing import Union, Optional, Tuple, List
+from typing import List, Optional, Tuple, Union
 
 from faster_whisper import WhisperModel
 
-# Модель small + CPU + INT8 — компромисс скорость/качество для учебного проекта
 DEFAULT_MODEL_SIZE = "small"
 DEFAULT_DEVICE = "cpu"
 DEFAULT_COMPUTE_TYPE = "int8"
@@ -66,14 +67,16 @@ def transcribe_with_fallback(
 ) -> Tuple[str, Optional[str], Optional[str]]:
     """
     Транскрипция с обработкой ошибок и ограничением по длительности.
-    Возвращает (text, detected_lang, error_message). error_message не None при ошибке.
+    Возвращает (text, detected_lang, error_message).
+    error_message не None при ошибке.
     """
     try:
         path = Path(audio_path)
         if path.exists():
             size_mb = path.stat().st_size / (1024 * 1024)
             if size_mb > 10:  # условно > 5 мин для 16 kHz mono
-                return "", None, "Аудио слишком длинное. Отправьте сообщение до 1–2 минут."
+                return "", None, ("Аудио слишком длинное. "
+                                  "Отправьте сообщение до 1–2 минут.")
         text, lang = transcribe(audio_path, model=model, language=language)
         return text, lang, None
     except Exception as e:

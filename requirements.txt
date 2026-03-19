@@ -9,3 +9,4 @@ sympy==1.14.0
 torchaudio==2.10.0
 omegaconf==2.3.0
 soundfile==0.13.1
+ruff==0.15.6

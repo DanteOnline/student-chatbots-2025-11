@@ -3,6 +3,8 @@
 """
 from .stt_pipeline import (
     load_model as load_stt_model,
+)
+from .stt_pipeline import (
     transcribe,
     transcribe_with_fallback,
 )

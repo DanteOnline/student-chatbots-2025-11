@@ -1,10 +1,13 @@
 import logging
-from aiogram import Router, F, types
-from app.services.voice import (
-    transcribe_with_fallback,
-    text_to_audio,
-)
+
+from aiogram import F, Router, types
+
 from app.models import llm_client
+from app.services.voice import (
+    text_to_audio,
+    transcribe_with_fallback,
+)
+
 logger = logging.getLogger('bot')
 
 router = Router()

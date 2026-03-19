@@ -7,20 +7,14 @@ run_webhook:
 delete_webhook:
 	python delete_webhook.py
 
+lint:
+	ruff check .
+
 lint_and_fix:
-	poetry run ruff check . --fix
+	ruff check . --fix
 
 format:
-	poetry run ruff format .
-
-lint:
-	poetry run ruff check .
-
-migrate:
-	alembic upgrade head
-
-make_migrations:
-	alembic revision --autogenerate
+	ruff format .
 
 ngrok:
 	ngrok http 8000
