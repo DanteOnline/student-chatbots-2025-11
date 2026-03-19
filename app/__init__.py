@@ -10,6 +10,7 @@ from app.handlers import (
     common,
     errors,
     llm,
+    voice,
 )
 from app.middlewares.logging import LoggingMiddleware
 
@@ -36,4 +37,5 @@ async def init_dispatcher() -> Dispatcher:
     # основные
     dispatcher.include_router(common.router)
     dispatcher.include_router(llm.router)
+    dispatcher.include_router(voice.router)
     return dispatcher

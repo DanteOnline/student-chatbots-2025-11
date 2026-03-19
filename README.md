@@ -6,7 +6,7 @@
 ## Установка
 
 ```commandline
-poetry install
+pip install -r requirements.txt
 ```
 
 ## Запуск

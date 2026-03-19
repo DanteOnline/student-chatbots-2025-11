@@ -13,7 +13,7 @@ router = Router()
 
 
 @router.errors()
-async def error_handler(event: ErrorEvent):
+async def error_handler(event: ErrorEvent) -> None:
     """
     Централизованное логирование ошибок
     """

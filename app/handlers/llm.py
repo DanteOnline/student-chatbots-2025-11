@@ -1,17 +1,18 @@
 from aiogram import Router, F
 from aiogram.types import Message
 
-from app.models import LLMClient
+from app.models import llm_client
 
 router = Router()
-llm_client = LLMClient()
 
-@router.message(~F.text.startswith("/"))
+@router.message(~F.text.startswith("/"), ~F.voice)
 async def ask_handler(message: Message) -> None:
-    text = message.text.replace("/ask", "").strip()
-    if not text:
-        await message.answer("Задайте вопрос после команды /ask")
-        return
+    """
+    Ответ llm на текстовое сообщение
+    :param message: сообщение пользователя
+    :return: None
+    """
+    text = message.text
     if len(text) > 500:
         await message.answer("Слишком серьёзная проблема. Я такое не потяну.")
         return
