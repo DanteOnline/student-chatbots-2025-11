@@ -1,17 +1,26 @@
 from .trace import append_trace
 
 
-def is_too_short(question):
+def is_too_short(question: str) -> bool:
+    """
+    Вопрос слишком короткий?
+    """
     min_length = 5
     return len(question) < min_length
 
 
-def is_too_long(question):
+def is_too_long(question: str) -> bool:
+    """
+    Вопрос слишком длинный?
+    """
     max_length = 500
     return len(question) > max_length
 
 
-def validate_input(state):
+def validate_input(state: dict) -> dict:
+    """
+    Проверка воода пользователя
+    """
     question = state["question"].strip()
     if not question:
         return {
@@ -41,5 +50,5 @@ def validate_input(state):
     }
 
 
-def after_validate(state):
-    return "handle_error" if state["route"] == "error" else "answer_directly"
+def after_validate(state: dict) -> str:
+    return "handle_error" if state["route"] == "error" else "route_question"

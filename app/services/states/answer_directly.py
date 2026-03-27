@@ -3,7 +3,7 @@ from app.models import llm_client
 from .trace import append_trace
 
 
-async def answer_directly(state):
+async def answer_directly(state: dict) -> dict:
     text = state['question']
 
     # Ошибку не обрабатываем, потому что она обработана в ask методе
