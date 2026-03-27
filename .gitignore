@@ -207,3 +207,4 @@ marimo/_lsp/
 __marimo__/
 voice_replies/
 voice_messages/
+logs/

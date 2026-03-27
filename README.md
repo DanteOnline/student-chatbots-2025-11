@@ -8,3 +8,4 @@ Homeworks for OTUS course "Chatbots"
 - [Homework 5. Bot with LLM](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_5_ask_llm)
 - [Homework 7. RAG](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_7_rag)
 - [Homework 8. Bot with LLM and Voice mode](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_8_voice_llm)
+- [Homework 9. Homework 9. Bot with langgraph](https://github.com/DanteOnline/student-chatbots-2025-11/tree/homework_9_langgraph)
