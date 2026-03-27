@@ -70,5 +70,6 @@ class LLMClient:
             return "Вселенная сегодня не настроена давать советы."
         except Exception:
             logger.exception("Unexpected LLM error")
+            return "Я слишком устал. Попробуйте позже :("
 
 llm_client = LLMClient()
