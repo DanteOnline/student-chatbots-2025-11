@@ -3,8 +3,6 @@ from .trace import append_trace
 
 
 def after_route(state):
-    print('AFTER ROUTE')
-    print(state['route'])
     return state['route']
 
 
