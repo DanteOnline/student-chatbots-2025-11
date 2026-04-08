@@ -1,28 +1,45 @@
-# Homework 1. Mini Async Parser
+# Homework 10. Bot with Admin Panel
 
 ## Установка
 
 ```commandline
-poetry install
+pip install -r requirements.txt
 ```
 
-## Запуск
+## Запуск бота
 
 ### Make
 
 ```commandline
-make run
+make bot
 ```
 
 ### Python
 
 ```commandline
-python main.py
+python manage.py run_bot
 ```
 
-## Возможные темы ИИ агента
+## Запуск сервера
 
-1. Бот-пересказчик голосовых (Бесплатный аналог telegram premium)
-2. Генератор тупых советов (Отправляешь проблему → бот даёт максимально бессмысленный, но забавный совет)
-3. «Разговор с монстром» (Устанавливаешь стиль: вампир, приведение, зомби, древний бог, ...)
-4. Что-то полезное по жизни, но пока не знаю что :)
+### Make
+
+```commandline
+make server
+```
+
+### Python
+
+```commandline
+python manage.py run_server
+```
+
+## Команды бота
+
+1. /start - информация о боте
+2. /help - информация о боте
+3. /capital <страна по Английски> - получение столицы страны
+
+## Админка
+
+Используется Django ORM и Django Admin

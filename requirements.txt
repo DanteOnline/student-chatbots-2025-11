@@ -1,0 +1,5 @@
+python-dotenv==1.2.2
+httpx==0.28.1
+Django==6.0.4
+aiogram==3.27.0
+pylint==4.0.5

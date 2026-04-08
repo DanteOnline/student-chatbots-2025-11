@@ -1,5 +1,8 @@
-run:
-	python .\main.py
+server:
+	python manage.py runserver
 
 lint:
-	poetry run pylint $(shell git ls-files '*.py')
+	pylint $(shell git ls-files '*.py')
+
+bot:
+	python manage.py run_bot
